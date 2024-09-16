@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Birthday Wish</title>
+    <!-- Google Fonts for a cuter look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <!-- Adding an icon library for a fun touch -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe4e1 0%, #ffb6c1 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+        p.note {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ffb6c1;
+            font-size: 1rem;
+            background-color: #fff0f5;
+        }
+        .button, .song-button {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover, .song-button:hover {
+            background-color: #ff85c1;
+        }
+        .hint {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .cake {
+            width: 150px;
+            margin-top: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+        .fa-birthday-cake {
+            color: #ff69b4;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        /* Float animation for the cake */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        /* Media queries for mobile responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            input[type="text"], input[type="password"] {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="login-container">
+        <i class="fas fa-birthday-cake"></i>
+        <h1>Login</h1>
+        <p class="note">Didn’t think an anonymous birthday present would be acceptable so here’s something else</p>
+        <input type="text" id="username" placeholder="Username"><br>
+        <input type="password" id="password" placeholder="Password"><br>
+        <button class="button" onclick="login()">Login</button>
+        <p class="hint">Password hint: Your phone password I knew</p>
+    </div>
+
+    <div class="container" id="birthday-container" style="display: none;">
+        <i class="fas fa-birthday-cake"></i>
+        <h1>Happy Birthday To You!</h1>
+        <p>As at the time I'm writing this code, I sitll don't haven't figured out how I'll deliver it you. But yeah... I know I'm meant to keep acting like I don't know you and what not but I can't forget that September 17th is the birthday of someone named Praise. Doing a somewhat birthday surprise present was my first idea but I just felt like you might reject it or not even open it. Now I'm not even sure you might open this. Oh well. Let me use the chance to ask you how you are. And your exams and stuff? I hope everything is going well, with work and everything in general. I saw you in UBTH some days ago when I was leaving posting, I think you guys had some surgery thingy. I hope that went well. I'm not feeling too well or else I would have tried to figure out how to insert a voice recording or something into this code. I hope this is enough. Happy birthday to you... Praise. I wish you an excellent year and success in everything you do. Your birthday falling in your exam period only means this exam will be the best so far. I hope you have a good day, I hope you enjoy your day and way you decide to spend it. There was meant to be some sort of botton at the end of this message so it can sing a birthday song. There is still sometime before midnight so I'll try to add it if possible. For now.. Happy birthday once more! Have a good day. </p>
+        <!-- Birthday cake image -->
+        <img src="https://www.pngkit.com/png/full/267-2678429_birthday-cake-png-image-png-birthday-cake.png" alt="Birthday Cake" class="cake">
+        
+        <!-- Button to play Happy Birthday song -->
+        <button class="song-button" onclick="playSong()">Play Birthday Song 🎶</button>
+        
+        <!-- Audio file for Happy Birthday song -->
+        <audio id="birthday-song" src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthdaySong.mp3"></audio>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "Praise" && password === "78990") {
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("birthday-container").style.display = "block";
+            } else {
+                if (username !== "Praise") {
+                    alert("Username is your name by the way.");
+                } else {
+                    alert("Incorrect password. Try again.");
+                }
+            }
+        }
+
+        function playSong() {
+            var song = document.getElementById("birthday-song");
+            song.play();
+        }
+    </script>
+
+</body>
+</html>
